@@ -18,7 +18,7 @@ export default function LoginForm() {
     const handleLogin = () => {
         fetch('https://www.googleapis.com/books/v1/volumes?q=search+terms').then((response) => {
             if (response.ok) {
-                setIsAuthenticated(true);
+                setIsAuthenticated(true); 
                 navigate('/loggedInPage/');
             }
         })
