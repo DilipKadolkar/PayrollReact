@@ -1324,18 +1324,29 @@
     
     .displayContentWhenNavbar {
         margin-left: 200px;
-        display: flex; flex-direction: row; justify-content: space-around; /* This will evenly space the cards */ align-items: flex-start; /* Align items at the start of the container */ padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        /* This will evenly space the cards */
+        align-items: flex-start;
+        /* Align items at the start of the container */
+        padding: 20px;
     }
+    
     .card {
-        border: 1px solid #ddd;
-        padding: 16px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        margin: 16px;
-        max-width: 400px;
-      }
-      
-      .card h2 {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+    }
+    
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card h2 {
         margin-top: 0;
-      }
-      
+    }

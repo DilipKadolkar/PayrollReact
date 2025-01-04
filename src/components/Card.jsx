@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Card = ({ title, content }) => {
-  return (
-    <div className="card">
-      <h2>{title}</h2>
-      <p>{content}</p>
-    </div>
-  );
+const Card = ({ title, onClick }) => {
+    return ( <
+        div className = "card"
+        onClick = { onClick } >
+        <
+        h2 > { title } < /h2> < /
+        div >
+    );
 };
 
 export default Card;
