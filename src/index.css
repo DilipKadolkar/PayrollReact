@@ -481,7 +481,7 @@ body {
 /*Background colors*/
 
 .bg-primary {
-    background-color: #7633f9;
+    background-color: teal;
 }
 
 .bg-secondary {
@@ -621,12 +621,12 @@ body {
 /* Btn Types*/
 
 .btn-primary {
-    background-color: #7633f9;
+    background-color: teal;
     color: white;
 }
 
 .btn-primary:hover {
-    background: rgba(118, 51, 249, 0.75);
+    background: teal(118, 51, 249, 0.75);
 }
 
 .btn-secondary {
@@ -1215,7 +1215,7 @@ body {
     flex-direction: column;
     width: 200px;
     height: 100%;
-    background-color: #7633f9;
+    background-color: teal;
     display: flex;
     justify-content: center;
     align-items: center;
