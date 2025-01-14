@@ -40,11 +40,12 @@ export default function PayrollProcess() {
                     {
                         backgroundColor: index % 3 === 0 ? 'lightblue' : index % 3 === 1 ? 'lightgreen' : 'lightcoral',
                         height: '250px',
-                        width: '100%',
+                        width: 'calc(33.333% - 20px)',
                         border: '1px solid #ccc',
                         borderRadius: '10px',
                         padding: '20px',
-                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                        margin: '10px'
                     }
                 }
                 icon = { icons[index] }

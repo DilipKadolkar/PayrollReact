@@ -1,5 +1,5 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Card = ({ title, onClick, style, icon }) => {
     return ( <
@@ -11,7 +11,7 @@ const Card = ({ title, onClick, style, icon }) => {
         size = "2x"
         className = "icon" / >
         <
-        h2 > { title } < /h2> < /
+        h2 > { title } < /h2>{" "} < /
         div >
     );
 };

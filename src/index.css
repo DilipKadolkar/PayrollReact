@@ -481,7 +481,7 @@ body {
 /*Background colors*/
 
 .bg-primary {
-    background-color: teal;
+    background-color: #2c3e50;
 }
 
 .bg-secondary {
@@ -621,12 +621,12 @@ body {
 /* Btn Types*/
 
 .btn-primary {
-    background-color: teal;
+    background-color: #2c3e50;
     color: white;
 }
 
 .btn-primary:hover {
-    background: teal(118, 51, 249, 0.75);
+    background: #2c3e50;
 }
 
 .btn-secondary {
@@ -1215,6 +1215,8 @@ body {
     flex-direction: column;
     width: 200px;
     height: 100%;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    /* Gradient background */
     background-color: teal;
     display: flex;
     justify-content: center;
@@ -1225,6 +1227,13 @@ body {
     padding: 3rem;
     user-select: none;
     color: white;
+}
+
+.navbarVertical a:hover {
+    background-color: #e74c3c;
+    /* Red */
+    color: #ffffff;
+    /* White */
 }
 
 .navbarContent {
@@ -1370,32 +1379,149 @@ body {
     padding: 20px;
 }
 
+
+/* Card.css */
+
 .card {
     display: flex;
     flex-direction: column;
-    flex: 0 1 calc(33.333% - 40px);
-    /* 3 cards per row with some margin */
-    margin: 20px;
-    box-sizing: border-box;
     align-items: center;
     justify-content: center;
     text-align: center;
-    transition: transform 0.2 s;
-    padding-left: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 15px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin: 10px;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card h2 {
-    font-family: 'Arial', sans - serif;
-    font-size: 24 px;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
     color: #333;
     margin-top: 10px;
 }
 
 .card .icon {
     color: #555;
-    margin-bottom: 10 px;
+    margin-bottom: 10px;
+}
+
+
+/* Navigation.css */
+
+
+/* Vertical Navigation Bar */
+
+
+/* Navigation.css */
+
+
+/* Vertical Navigation Bar */
+
+
+/* Vertical Navigation Bar */
+
+.vertical-nav {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    /* Gradient background */
+    color: #ecf0f1;
+    /* Light Gray */
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+.vertical-nav a {
+    color: #ecf0f1;
+    /* Light Gray */
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+.vertical-nav a:hover {
+    background-color: #e74c3c;
+    /* Red */
+    color: #ffffff;
+    /* White */
+}
+
+
+/* Horizontal Navigation Bar */
+
+.horizontal-nav {
+    width: calc(100% - 250px);
+    height: 60px;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    /* Gradient background */
+    color: #ecf0f1;
+    /* Light Gray */
+    position: fixed;
+    top: 0;
+    left: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    /* Ensure it stays above other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+.horizontal-nav a {
+    color: #ecf0f1;
+    /* Light Gray */
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+.horizontal-nav a:hover {
+    background-color: #e74c3c;
+    /* Red */
+    color: #ffffff;
+    /* White */
+}
+
+.horizontal-nav .logo img {
+    height: 40px;
+    /* Adjust the height as needed */
+    margin-right: 20px;
+}
+
+
+/* Main Content */
+
+.main-content {
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #ffffff;
+    /* White */
+    color: #34495e;
+    /* Darker Blue */
+    min-height: 100vh;
 }

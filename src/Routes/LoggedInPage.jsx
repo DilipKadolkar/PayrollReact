@@ -1,7 +1,7 @@
 import React from 'react';
 import LoggedInNavBar from "../Routes/LoggedInNavBar";
 import Landing from "../components/Landing";
-import { Outlet, Link, NavLink } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const LoggedInPage = () => {
     return ( <
@@ -11,9 +11,11 @@ const LoggedInPage = () => {
         <
         Landing / >
         <
-        Outlet / >
+        div className = "main-content" >
         <
-        /div>
+        Outlet / > { /* This is where nested routes will be rendered */ } <
+        /div> < /
+        div >
     );
 }
 
