@@ -1389,10 +1389,10 @@ body {
     justify-content: center;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 20px;
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     margin: 10px;
 }
@@ -1536,10 +1536,15 @@ body {
     justify-content: center;
     padding: 20px;
     background-color: #f9f9f9;
+    border: 3px solid #ccc;
+    /* Corrected */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Corrected */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Corrected */
     max-width: 800px;
     margin: 50px auto;
+    margin-left: 410px;
     text-align: center;
 }
 

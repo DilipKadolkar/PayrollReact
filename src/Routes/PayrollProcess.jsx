@@ -46,13 +46,14 @@ export default function PayrollProcess() {
                 }
                 style = {
                     {
-                        backgroundColor: 'grey', // Changed to grey
+                        backgroundColor: '#f9f9f9', // Changed to #333
+                        color: '#fff', // Ensure text is visible on dark background
                         height: '250px',
                         width: 'calc(33.333% - 20px)',
-                        border: '1px solid #ccc',
+                        border: '3px solid #ccc',
                         borderRadius: '10px',
                         padding: '20px',
-                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
                         margin: '10px'
                     }
                 }
