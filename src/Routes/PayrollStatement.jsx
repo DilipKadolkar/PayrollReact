@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function PayrollStatement() {
     const [selectedCompany, setSelectedCompany] = useState('');
+    const [selectedMonth, setSelectedMonth] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+        setSelectedMonth(currentMonth);
+    }, []);
 
     const handleCompanyChange = (event) => {
         setSelectedCompany(event.target.value);
     };
 
+    const handleMonthChange = (event) => {
+        setSelectedMonth(event.target.value);
+    };
+
     const handleDownload = async() => {
         if (selectedCompany) {
             try {
-                const response = await fetch(`http://localhost:8080/downloadExcel?company=${selectedCompany}`, {
+                const response = await fetch(`http://localhost:8080/downloadExcel?company=${selectedCompany}&month=${selectedMonth}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -24,11 +34,12 @@ export default function PayrollStatement() {
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = `${selectedCompany}_Payroll_Statement.xlsx`;
+                    a.download = `${selectedCompany}_Payroll_Statement_${selectedMonth}.xlsx`;
                     document.body.appendChild(a);
                     a.click();
                     a.remove();
                     alert(`File downloaded successfully for ${selectedCompany}`);
+                    navigate('/loggedInPage/payrollProcess'); // Navigate to PayrollProcess page
                 } else {
                     alert('Error downloading file');
                 }
@@ -42,11 +53,17 @@ export default function PayrollStatement() {
     };
 
     const companies = ['Company A', 'Company B', 'Company C']; // Example companies
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
 
     return ( <
-            div className = "payroll-statement-container displayContentWhenNavbar" >
+            div className = "payroll-statement-container" >
             <
             h1 > Payroll Statement < /h1> <
+            div className = "dropdown-container" >
+            <
             select value = { selectedCompany }
             onChange = { handleCompanyChange }
             className = "company-dropdown" >
@@ -58,7 +75,17 @@ export default function PayrollStatement() {
             ))
         } <
         /select> <
-    button onClick = { handleDownload }
+    select value = { selectedMonth }
+    onChange = { handleMonthChange }
+    className = "month-dropdown" > {
+            months.map((month, index) => ( <
+                option key = { index }
+                value = { month } > { month } < /option>
+            ))
+        } <
+        /select> < /
+    div > < br / > <
+        button onClick = { handleDownload }
     className = "download-button" > Download Excel < /button> < /
     div >
 );
