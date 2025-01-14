@@ -1,14 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../components/Card'; // Make sure this path is correct based on your project structure
 import { faUserPlus, faDollarSign, faFileInvoiceDollar, faBriefcase, faClock, faCalendarAlt, faChartLine, faGraduationCap, faHeartbeat, faPiggyBank, faMoneyCheckAlt, faPlane, faGift, faCalendar, faHome, faAddressBook, faBullhorn, faBook, faUsers, faTasks, faFileInvoice, faMoneyBillWave, faChartPie, faClipboardList, faShieldAlt, faLaptop, faBoxOpen, faCalendarCheck, faCalendarDay, faChalkboardTeacher, faPoll, faCommentDots, faUserGraduate, faArrowUp, faMoneyBill, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function PayrollProcess() {
+    const navigate = useNavigate();
+
     const handleCardClick = (title) => {
-        alert(`You clicked on ${title}`);
+        if (title === 'Process Payroll') {
+            navigate('/loggedInPage/payrollProcess/uploadExcelProcess');
+        } else {
+            alert(`You clicked on ${title}`);
+        }
     };
 
     const cardTitles = [
-        'Add employee', 'Salary Breakdown', 'Tax Information', 'Employee Benefits', 'Payroll Summary',
+        'Process Payroll', 'Add employee', 'Salary Breakdown', 'Tax Information', 'Employee Benefits', 'Payroll Summary',
         'Overtime Details', 'Leave Management', 'Employee Attendance', 'Performance Review', 'Training Programs',
         'Health Insurance', 'Retirement Plans', 'Expense Reimbursement', 'Travel Allowance', 'Bonus Distribution',
         'Holiday Schedule', 'Work From Home', 'Employee Directory', 'Job Openings', 'Company Policies',
@@ -35,10 +42,11 @@ export default function PayrollProcess() {
                 Card key = { index }
                 title = { title }
                 onClick = {
-                    () => handleCardClick(title) }
+                    () => handleCardClick(title)
+                }
                 style = {
                     {
-                        backgroundColor: index % 3 === 0 ? 'lightblue' : index % 3 === 1 ? 'lightgreen' : 'lightcoral',
+                        backgroundColor: 'grey', // Changed to grey
                         height: '250px',
                         width: 'calc(33.333% - 20px)',
                         border: '1px solid #ccc',

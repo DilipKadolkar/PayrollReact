@@ -1525,3 +1525,91 @@ body {
     /* Darker Blue */
     min-height: 100vh;
 }
+
+
+/* EmployeeInfo.css */
+
+.employee-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+h1,
+h2 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+p {
+    font-family: 'Arial', sans-serif;
+    color: #666;
+    text-align: center;
+    max-width: 600px;
+}
+
+.company-dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.file-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.file-info {
+    text-align: center;
+}
+
+.file-info h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.upload-button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    /* Gradient background */
+    color: #ecf0f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.upload-button:hover {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    /* Inverted gradient */
+    transform: translateY(-2px);
+    /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* More pronounced shadow on hover */
+}
+
+.upload-button .fa-upload {
+    margin-right: 8px;
+    /* Add some space between the icon and text */
+}

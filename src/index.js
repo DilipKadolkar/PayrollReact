@@ -15,6 +15,7 @@ import EmployeeInfo from "./Routes/EmployeeInfo.jsx"
 import LoggedInPage from "./Routes/LoggedInPage.jsx"
 import { AuthProvider } from './Routes/AuthContext.jsx'; // Ensure AuthProvider is imported correctly
 import PrivateRoute from "./Routes/PrivateRoute.jsx"
+import UploadExcelProcess from "./Routes/UploadExcelProcess.jsx";
 
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -59,6 +60,10 @@ const router = createBrowserRouter([{
             {
                 path: "/loggedInPage/payrollProcess",
                 element: < PayrollProcess / >
+            },
+            {
+                path: "/loggedInPage/payrollProcess/uploadExcelProcess",
+                element: < UploadExcelProcess / >
             }
         ]
     }
