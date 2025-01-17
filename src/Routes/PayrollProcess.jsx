@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../components/Card'; // Make sure this path is correct based on your project structure
-import { faUserPlus, faDollarSign, faFileInvoiceDollar, faBriefcase, faClock, faCalendarAlt, faChartLine, faGraduationCap, faHeartbeat, faPiggyBank, faMoneyCheckAlt, faPlane, faGift, faCalendar, faHome, faAddressBook, faBullhorn, faBook, faUsers, faTasks, faFileInvoice, faMoneyBillWave, faChartPie, faClipboardList, faShieldAlt, faLaptop, faBoxOpen, faCalendarCheck, faCalendarDay, faChalkboardTeacher, faPoll, faCommentDots, faUserGraduate, faArrowUp, faMoneyBill, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faDollarSign, faBuilding, faFileInvoiceDollar, faBriefcase, faClock, faCalendarAlt, faChartLine, faGraduationCap, faHeartbeat, faPiggyBank, faMoneyCheckAlt, faPlane, faGift, faCalendar, faHome, faAddressBook, faBullhorn, faBook, faUsers, faTasks, faFileInvoice, faMoneyBillWave, faChartPie, faClipboardList, faShieldAlt, faLaptop, faBoxOpen, faCalendarCheck, faCalendarDay, faChalkboardTeacher, faPoll, faCommentDots, faUserGraduate, faArrowUp, faMoneyBill, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function PayrollProcess() {
     const navigate = useNavigate();
@@ -32,15 +32,16 @@ export default function PayrollProcess() {
     ];
 
     const icons = [
-        faUserPlus, faDollarSign, faFileInvoiceDollar, faBriefcase, faDollarSign,
-        faClock, faCalendarAlt, faCalendarAlt, faChartLine, faGraduationCap,
+        faFileInvoiceDollar, faChartLine, faBuilding, faUserPlus, faFileInvoiceDollar, faHeartbeat, faChartPie,
+        faClock, faCalendarAlt, faCalendarDay, faPoll, faGraduationCap,
         faHeartbeat, faPiggyBank, faMoneyCheckAlt, faPlane, faGift,
         faCalendar, faHome, faAddressBook, faBullhorn, faBook,
         faUsers, faTasks, faFileInvoice, faMoneyBillWave, faChartPie,
-        faClipboardList, faShieldAlt, faShieldAlt, faShieldAlt, faLaptop,
-        faBoxOpen, faCalendarCheck, faCalendarDay, faChalkboardTeacher, faPoll,
-        faCommentDots, faUserGraduate, faArrowUp, faMoneyBill, faSignOutAlt
+        faClipboardList, faShieldAlt, faLaptop, faBoxOpen, faCalendarCheck,
+        faCalendarDay, faChalkboardTeacher, faPoll, faCommentDots, faUserGraduate,
+        faArrowUp, faMoneyBill, faSignOutAlt
     ];
+
 
     return ( <
         div className = "displayContentWhenNavbar" > {
