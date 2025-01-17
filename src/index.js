@@ -17,6 +17,8 @@ import { AuthProvider } from './Routes/AuthContext.jsx'; // Ensure AuthProvider 
 import PrivateRoute from "./Routes/PrivateRoute.jsx"
 import UploadExcelProcess from "./Routes/UploadExcelProcess.jsx";
 import PayrollStatement from "./Routes/PayrollStatement.jsx";
+import AddCompany from "./Routes/AddCompany.jsx";
+import AddEmployee from "./Routes/AddEmployee.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const isAuthenticated = true; // Replace with actual authentication logic
@@ -68,6 +70,14 @@ const router = createBrowserRouter([{
             {
                 path: "/loggedInPage/payrollProcess/payrollStatement",
                 element: < PayrollStatement / >
+            },
+            {
+                path: "/loggedInPage/payrollProcess/addCompany",
+                element: < AddCompany / >
+            },
+            {
+                path: "/loggedInPage/payrollProcess/addEmployee",
+                element: < AddEmployee / >
             }
         ]
     }

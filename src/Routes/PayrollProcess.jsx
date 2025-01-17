@@ -11,13 +11,17 @@ export default function PayrollProcess() {
             navigate('/loggedInPage/payrollProcess/uploadExcelProcess');
         } else if (title === 'Payroll Statement') {
             navigate('/loggedInPage/payrollProcess/payrollStatement');
+        } else if (title === 'Add Company') {
+            navigate('/loggedInPage/payrollProcess/addCompany');
+        } else if (title === 'Add Employee') {
+            navigate('/loggedInPage/payrollProcess/addEmployee');
         } else {
             alert(`You clicked on ${title}`);
         }
     };
 
     const cardTitles = [
-        'Process Payroll', 'Payroll Statement', 'Add employee', 'Salary Breakdown', 'Tax Information', 'Employee Benefits', 'Payroll Summary',
+        'Process Payroll', 'Payroll Statement', 'Add Company', 'Add Employee', 'Tax Information', 'Employee Benefits', 'Payroll Summary',
         'Overtime Details', 'Leave Management', 'Employee Attendance', 'Performance Review', 'Training Programs',
         'Health Insurance', 'Retirement Plans', 'Expense Reimbursement', 'Travel Allowance', 'Bonus Distribution',
         'Holiday Schedule', 'Work From Home', 'Employee Directory', 'Job Openings', 'Company Policies',
