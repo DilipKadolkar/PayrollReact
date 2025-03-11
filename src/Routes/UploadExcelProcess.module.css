@@ -1,0 +1,174 @@
+ @media (max-width: 576px) {
+     .employeeInfoContainer {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         padding: 20px;
+         background-color: #f9f9f9;
+         border: 3px solid #ccc;
+         /* Corrected */
+         border-radius: 10px;
+         /* Corrected */
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+         /* Corrected */
+         max-width: 800px;
+         margin: 50px auto;
+         margin-left: 200px;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: space-around;
+         /* This will evenly space the cards */
+         align-items: flex-start;
+         /* Align items at the start of the container */
+         padding: 20px;
+     }
+ }
+ 
+ @media (min-width: 577px) and (max-width: 768px) {
+     .employeeInfoContainer {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         padding: 20px;
+         background-color: #f9f9f9;
+         border: 3px solid #ccc;
+         /* Corrected */
+         border-radius: 10px;
+         /* Corrected */
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+         /* Corrected */
+         max-width: 800px;
+         margin: 50px auto;
+         margin-left: 190px;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: space-around;
+         /* This will evenly space the cards */
+         align-items: flex-start;
+         /* Align items at the start of the container */
+         padding: 20px;
+     }
+ }
+ 
+ @media (min-width: 769px) and (max-width: 1024px) {
+     .employeeInfoContainer {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         padding: 20px;
+         background-color: #f9f9f9;
+         border: 3px solid #ccc;
+         /* Corrected */
+         border-radius: 10px;
+         /* Corrected */
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+         /* Corrected */
+         max-width: 800px;
+         margin: 50px auto;
+         margin-left: 200px;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: space-around;
+         /* This will evenly space the cards */
+         align-items: flex-start;
+         /* Align items at the start of the container */
+         padding: 20px;
+     }
+ }
+ 
+ @media (min-width: 1025px) {
+     .employeeInfoContainer {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         padding: 20px;
+         background-color: #f9f9f9;
+         border: 3px solid #ccc;
+         /* Corrected */
+         border-radius: 10px;
+         /* Corrected */
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+         /* Corrected */
+         max-width: 800px;
+         margin: 50px auto;
+         margin-left: 410px;
+         margin-top: 10%;
+         text-align: center;
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: space-around;
+         /* This will evenly space the cards */
+         align-items: flex-start;
+         /* Align items at the start of the container */
+         padding: 20px;
+     }
+ }
+ 
+ .companyDropdown {
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     margin-bottom: 20px;
+     font-size: 16px;
+     width: 100%;
+ }
+ 
+ .fileInput {
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     margin-bottom: 20px;
+     font-size: 16px;
+ }
+ 
+ .fileInfo {
+     text-align: center;
+ }
+ 
+ .fileInfoH3 {
+     font-family: 'Arial', sans-serif;
+     font-size: 20px;
+     color: #333;
+     margin-bottom: 10px;
+ }
+ 
+ .uploadButton {
+     padding: 10px 20px;
+     background: linear-gradient(135deg, #2c3e50, #34495e);
+     /* Gradient background */
+     color: #ecf0f1;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     /* Subtle shadow */
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 600;
+     font-size: 16px;
+ }
+ 
+ .uploadButton:hover {
+     background: linear-gradient(135deg, #34495e, #2c3e50);
+     /* Inverted gradient */
+     transform: translateY(-2px);
+     /* Slight lift on hover */
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+     /* More pronounced shadow on hover */
+ }
+ 
+ .uploadButton .faUpload {
+     margin-right: 8px;
+     /* Add some space between the icon and text */
+ }

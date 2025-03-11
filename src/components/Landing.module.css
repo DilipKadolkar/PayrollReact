@@ -1,0 +1,82 @@
+.navbarVertical {
+    position: fixed;
+    flex-direction: column;
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    /* Gradient background */
+    background-color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(156, 28, 28, 0.769);
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    user-select: none;
+    color: white;
+    margin-top: 55px;
+    /* Adjust this value based on the height of your horizontal navbar */
+    padding: 20px;
+}
+
+.navbarVertical a:hover {
+    background-color: #e74c3c;
+    /* Red */
+    color: #ffffff;
+    /* White */
+}
+
+.text-light {
+    color: #f8f9fa;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+    }
+}
+
+.navbar-nav .nav-item.active {
+    background-color: #eeee;
+    color: #000;
+}
+
+.navbar-nav1 .nav-item1 {}
+
+.navbar-nav .nav-item {
+    margin-right: 1rem;
+}
+
+.navbar-nav .nav-item:hover {
+    text-decoration: underline;
+}
+
+.navbar-nav .nav-link {
+    color: inherit;
+}
+
+.navbar-nav.showNavbar {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    margin: 15px;
+    width: 100%;
+}
+
+.navbar.showNavbar {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.navbarContent {
+    flex-direction: column;
+}

@@ -1227,6 +1227,9 @@ body {
     padding: 3rem;
     user-select: none;
     color: white;
+    margin-top: 55px;
+    /* Adjust this value based on the height of your horizontal navbar */
+    padding: 20px;
 }
 
 .navbarVertical a:hover {
@@ -1243,12 +1246,15 @@ body {
 .navbar {
     display: flex;
     justify-content: center;
+    top: 0;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
     user-select: none;
+    position: fixed;
+    z-index: 1000;
 }
 
 .navbar-logo {
@@ -1372,11 +1378,13 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     /* This will evenly space the cards */
     align-items: flex-start;
     /* Align items at the start of the container */
     padding: 20px;
+    margin-top: 4%;
+    /* Add some margin to move the cards slightly down */
 }
 
 

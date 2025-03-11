@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { Outlet, NavLink } from "react-router-dom";
+import styles from "./Landing.module.css"; // Import the CSS module
+
 
 export default function Landing() {
     return ( <

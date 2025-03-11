@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload, faBuilding, faFileExcel } from '@fortawesome/free-solid-svg-icons';
+import styles from "./UploadExcelProcess.module.css"; // Import the CSS module
 
 export default function UploadExcelProcess() {
     const [file, setFile] = useState(null);
@@ -11,6 +13,7 @@ export default function UploadExcelProcess() {
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
+        console.log('Selected file:', event.target.files[0]);
     };
 
     const handleUpload = async() => {
@@ -46,58 +49,76 @@ export default function UploadExcelProcess() {
         if (fileInputRef.current) {
             fileInputRef.current.value = ''; // Clear the file input value
         }
+        console.log('Selected company:', event.target.value);
     };
 
     const companies = ['Company A', 'Company B', 'Company C']; // Example companies
 
     return ( <
-            div className = "employee-info-container displayContentWhenNavbar" >
+            Container className = { styles.employeeInfoContainer } >
             <
-            h1 > < FontAwesomeIcon icon = { faBuilding }
-            /> Please select company and upload excel</
+            Row >
+            <
+            Col >
+            <
             h1 >
             <
+            FontAwesomeIcon icon = { faBuilding }
+            /> Please select company and upload excel < /
+            h1 > <
             br / >
             <
-            select value = { selectedCompany }
-            onChange = { handleCompanyChange }
-            className = "company-dropdown" >
+            Form.Group controlId = "companySelect"
+            className = { styles.companyDropdown } >
+            <
+            Form.Control as = "select"
+            value = { selectedCompany }
+            onChange = { handleCompanyChange } >
             <
             option value = "" > Select a company < /option> {
             companies.map((company, index) => ( <
                 option key = { index }
-                value = { company } > { company } < /option>
+                value = { company } > { company } <
+                /option>
             ))
         } <
-        /select> {
-    selectedCompany && ( <
-            >
-            <
-            input type = "file"
-            accept = ".xlsx, .xls"
-            onChange = { handleFileChange }
-            className = "file-input"
-            ref = { fileInputRef } // Attach the ref to the file input
-            /> {
-            file && ( <
-                div className = "file-info" >
+        /Form.Control> < /
+    Form.Group > {
+            selectedCompany && ( <
+                >
                 <
-                h3 > < FontAwesomeIcon icon = { faFileExcel }
-                /> Uploaded File: {file.name}</
-                h3 >
+                Form.Group controlId = "custom-file"
+                className = { styles.fileInput } >
                 <
-                button onClick = { handleUpload }
-                className = "upload-button" >
-                <
-                FontAwesomeIcon icon = { faUpload }
-                /> Upload to Server < /
-                button > <
-                /div>
+                Form.Control type = "file"
+                label = "Upload Excel File"
+                accept = ".xlsx, .xls"
+                onChange = { handleFileChange }
+                ref = { fileInputRef } // Attach the ref to the file input
+                /> < /
+                Form.Group > {
+                    file && ( <
+                        div className = { styles.fileInfo } >
+                        <
+                        h3 >
+                        <
+                        FontAwesomeIcon icon = { faFileExcel }
+                        /> Uploaded File: {file.name} < /
+                        h3 > <
+                        Button onClick = { handleUpload }
+                        className = { styles.uploadButton } >
+                        <
+                        FontAwesomeIcon icon = { faUpload }
+                        /> Upload to Server < /
+                        Button > <
+                        /div>
+                    )
+                } <
+                />
             )
         } <
-        />
-)
-} <
-/div>
+        /Col> < /
+    Row > <
+        /Container>
 );
 }
