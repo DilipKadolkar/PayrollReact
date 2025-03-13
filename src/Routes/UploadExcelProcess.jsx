@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +8,7 @@ import styles from "./UploadExcelProcess.module.css"; // Import the CSS module
 export default function UploadExcelProcess() {
     const [file, setFile] = useState(null);
     const [selectedCompany, setSelectedCompany] = useState('');
+    const [companies, setCompanies] = useState([]);
     const fileInputRef = useRef(null);
     const navigate = useNavigate();
 
@@ -15,6 +16,22 @@ export default function UploadExcelProcess() {
         setFile(event.target.files[0]);
         console.log('Selected file:', event.target.files[0]);
     };
+
+
+    useEffect(() => {
+        // Fetch the list of companies from the API
+        const fetchCompanies = async() => {
+            try {
+                const response = await fetch("http://localhost:8080/api/companies");
+                const data = await response.json();
+                setCompanies(data);
+            } catch (error) {
+                console.error("Error fetching companies:", error);
+            }
+        };
+
+        fetchCompanies();
+    }, []);
 
     const handleUpload = async() => {
         if (file && selectedCompany) {
@@ -52,73 +69,71 @@ export default function UploadExcelProcess() {
         console.log('Selected company:', event.target.value);
     };
 
-    const companies = ['Company A', 'Company B', 'Company C']; // Example companies
 
     return ( <
-            Container className = { styles.employeeInfoContainer } >
+        Container className = { styles.employeeInfoContainer } >
+        <
+        Row >
+        <
+        Col >
+        <
+        h1 >
+        <
+        FontAwesomeIcon icon = { faBuilding }
+        /> Please select company and upload excel < /
+        h1 > <
+        br / >
+        <
+        Form.Group controlId = "companySelect"
+        className = { styles.companyDropdown } >
+        <
+        Form.Control as = "select"
+        value = { selectedCompany }
+        onChange = { handleCompanyChange } >
+        <
+        option value = "" > Select a company < /option> {companies.map((company, index) => ( <
+        option key = { index }
+        value = { company.companyName } > { company.companyName } <
+        /option>
+    ))
+} <
+/Form.Control> < /
+Form.Group > {
+        selectedCompany && ( <
+            >
             <
-            Row >
+            Form.Group controlId = "custom-file"
+            className = { styles.fileInput } >
             <
-            Col >
-            <
-            h1 >
-            <
-            FontAwesomeIcon icon = { faBuilding }
-            /> Please select company and upload excel < /
-            h1 > <
-            br / >
-            <
-            Form.Group controlId = "companySelect"
-            className = { styles.companyDropdown } >
-            <
-            Form.Control as = "select"
-            value = { selectedCompany }
-            onChange = { handleCompanyChange } >
-            <
-            option value = "" > Select a company < /option> {
-            companies.map((company, index) => ( <
-                option key = { index }
-                value = { company } > { company } <
-                /option>
-            ))
-        } <
-        /Form.Control> < /
-    Form.Group > {
-            selectedCompany && ( <
-                >
-                <
-                Form.Group controlId = "custom-file"
-                className = { styles.fileInput } >
-                <
-                Form.Control type = "file"
-                label = "Upload Excel File"
-                accept = ".xlsx, .xls"
-                onChange = { handleFileChange }
-                ref = { fileInputRef } // Attach the ref to the file input
-                /> < /
-                Form.Group > {
-                    file && ( <
-                        div className = { styles.fileInfo } >
-                        <
-                        h3 >
-                        <
-                        FontAwesomeIcon icon = { faFileExcel }
-                        /> Uploaded File: {file.name} < /
-                        h3 > <
-                        Button onClick = { handleUpload }
-                        className = { styles.uploadButton } >
-                        <
-                        FontAwesomeIcon icon = { faUpload }
-                        /> Upload to Server < /
-                        Button > <
-                        /div>
-                    )
-                } <
-                />
-            )
-        } <
-        /Col> < /
-    Row > <
-        /Container>
+            Form.Control type = "file"
+            label = "Upload Excel File"
+            accept = ".xlsx, .xls"
+            onChange = { handleFileChange }
+            ref = { fileInputRef } // Attach the ref to the file input
+            /> < /
+            Form.Group > {
+                file && ( <
+                    div className = { styles.fileInfo } >
+                    <
+                    h3 >
+                    <
+                    FontAwesomeIcon icon = { faFileExcel }
+                    /> Uploaded File: {file.name} < /
+                    h3 > <
+                    Button onClick = { handleUpload }
+                    className = { styles.uploadButton } >
+                    <
+                    FontAwesomeIcon icon = { faUpload }
+                    /> Upload to Server < /
+                    Button > <
+                    /div>
+                )
+            } <
+            />
+        )
+    } <
+    /Col> < /
+Row > <
+    /Container>
 );
 }
