@@ -10,22 +10,32 @@ import {
     faUserTie,
     faVenusMars,
     faClock,
+    faHome,
+    faMoneyBill,
+    faIdBadge
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AddEmployee.module.css"; // Import the CSS module
 
 export default function AddEmployee() {
     const [selectedCompany, setSelectedCompany] = useState("");
-    const [employeeName, setEmployeeName] = useState("");
-    const [spouseName, setSpouseName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [fatherName, setFatherName] = useState("");
     const [birthDate, setBirthDate] = useState("");
-    const [joiningDate, setJoiningDate] = useState("");
+    const [hireDate, setHireDate] = useState("");
     const [gender, setGender] = useState("");
-    const [contactNumber, setContactNumber] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [probationPeriod, setProbationPeriod] = useState("");
     const [aadharNumber, setAadharNumber] = useState("");
     const [email, setEmail] = useState("");
     const [employeeType, setEmployeeType] = useState("");
+    const [addressLine1, setAddressLine1] = useState("");
+    const [addressLine2, setAddressLine2] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [zipCode, setZipCode] = useState("");
+    const [salary, setSalary] = useState("");
+    const [employeeID, setEmployeeId] = useState("");
     const [companies, setCompanies] = useState([]);
 
     useEffect(() => {
@@ -45,7 +55,7 @@ export default function AddEmployee() {
 
     const handleFormSubmit = async(event) => {
         event.preventDefault();
-        if (selectedCompany && employeeName) {
+        if (selectedCompany && firstName) {
             try {
                 const response = await fetch("http://localhost:8080/api/employees", {
                     method: "POST",
@@ -54,35 +64,48 @@ export default function AddEmployee() {
                     },
                     body: JSON.stringify({
                         company: selectedCompany,
-                        firstName: employeeName,
-                        lastName: employeeName,
-                        spouseName,
+                        firstName,
+                        lastName,
                         fatherName,
                         birthDate,
-                        joiningDate,
+                        hireDate,
                         gender,
-                        contactNumber,
+                        phoneNumber,
                         probationPeriod,
                         aadharNumber,
-                        email: email,
+                        email,
                         employeeType,
+                        addressLine1,
+                        addressLine2,
+                        city,
+                        state,
+                        zipCode,
+                        salary,
+                        employeeID
                     }),
                 });
 
                 if (response.ok) {
                     alert("Employee added successfully");
                     setSelectedCompany("");
-                    setEmployeeName("");
-                    setSpouseName("");
+                    setFirstName("");
+                    setLastName("");
                     setFatherName("");
                     setBirthDate("");
-                    setJoiningDate("");
+                    setHireDate("");
                     setGender("");
-                    setContactNumber("");
+                    setPhoneNumber("");
                     setProbationPeriod("");
                     setAadharNumber("");
                     setEmail("");
                     setEmployeeType("");
+                    setAddressLine1("");
+                    setAddressLine2("");
+                    setCity("");
+                    setState("");
+                    setZipCode("");
+                    setSalary("");
+                    setEmployeeId("");
                 } else {
                     alert("Error adding employee");
                 }
@@ -133,10 +156,10 @@ div > { " " } <
 className = { styles.icon }
 />{" "} <
 input type = "text"
-placeholder = "Enter employee name"
-value = { employeeName }
+placeholder = "Enter first name"
+value = { firstName }
 onChange = {
-    (e) => setEmployeeName(e.target.value)
+    (e) => setFirstName(e.target.value)
 }
 className = { styles.employeeInput }
 />{" "} < /
@@ -147,10 +170,10 @@ div > { " " } <
 className = { styles.icon }
 />{" "} <
 input type = "text"
-placeholder = "Enter spouse name"
-value = { spouseName }
+placeholder = "Enter last name"
+value = { lastName }
 onChange = {
-    (e) => setSpouseName(e.target.value)
+    (e) => setLastName(e.target.value)
 }
 className = { styles.employeeInput }
 />{" "} < /
@@ -190,9 +213,9 @@ className = { styles.icon }
 />{" "} <
 label className = { styles.label } > Joining Date < /label>{" "} <
 input type = "date"
-value = { joiningDate }
+value = { hireDate }
 onChange = {
-    (e) => setJoiningDate(e.target.value)
+    (e) => setHireDate(e.target.value)
 }
 className = { styles.employeeInput }
 />{" "} < /
@@ -232,9 +255,9 @@ className = { styles.icon }
 />{" "} <
 input type = "text"
 placeholder = "Enter contact number"
-value = { contactNumber }
+value = { phoneNumber }
 onChange = {
-    (e) => setContactNumber(e.target.value)
+    (e) => setPhoneNumber(e.target.value)
 }
 className = { styles.employeeInput }
 />{" "} < /
@@ -291,6 +314,104 @@ placeholder = "Enter employee type"
 value = { employeeType }
 onChange = {
     (e) => setEmployeeType(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faHome }
+className = { styles.icon }
+/>{" "} <
+input type = "text"
+placeholder = "Enter address line 1"
+value = { addressLine1 }
+onChange = {
+    (e) => setAddressLine1(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faHome }
+className = { styles.icon }
+/>{" "} <
+input type = "text"
+placeholder = "Enter address line 2"
+value = { addressLine2 }
+onChange = {
+    (e) => setAddressLine2(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faHome }
+className = { styles.icon }
+/>{" "} <
+input type = "text"
+placeholder = "City"
+value = { city }
+onChange = {
+    (e) => setCity(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faHome }
+className = { styles.icon }
+/>{" "} <
+input type = "text"
+placeholder = "State"
+value = { state }
+onChange = {
+    (e) => setState(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faHome }
+className = { styles.icon }
+/>{" "} <
+input type = "text"
+placeholder = "Zipcode"
+value = { zipCode }
+onChange = {
+    (e) => setZipCode(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faMoneyBill }
+className = { styles.icon }
+/>{" "} <
+input type = "number"
+placeholder = "Enter salary"
+value = { salary }
+onChange = {
+    (e) => setSalary(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faIdBadge }
+className = { styles.icon }
+/>{" "} <
+input type = "number"
+placeholder = "Enter employee ID"
+value = { employeeID }
+onChange = {
+    (e) => setEmployeeId(e.target.value)
 }
 className = { styles.employeeInput }
 />{" "} < /
