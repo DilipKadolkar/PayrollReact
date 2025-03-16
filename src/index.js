@@ -8,8 +8,6 @@ import About from "./Routes/About.jsx"
 import Contact from "./Routes/Contact.jsx"
 import Home from "./Routes/Home.jsx";
 import FirstPage from "./Routes/FirstPage.jsx";
-import AllInfoPage from "./components/AllInfoPage.jsx";
-import Landing from "./components/Landing.jsx";
 import PayrollProcess from "./Routes/PayrollProcess.jsx";
 import EmployeeInfo from "./Routes/EmployeeInfo.jsx"
 import LoggedInPage from "./Routes/LoggedInPage.jsx"
@@ -19,6 +17,7 @@ import UploadExcelProcess from "./Routes/UploadExcelProcess.jsx";
 import PayrollStatement from "./Routes/PayrollStatement.jsx";
 import AddCompany from "./Routes/AddCompany.jsx";
 import AddEmployee from "./Routes/AddEmployee.jsx";
+import EmployeeDetails from "./Routes/EmployeeDetails.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const isAuthenticated = true; // Replace with actual authentication logic
@@ -58,6 +57,10 @@ const router = createBrowserRouter([{
         children: [{
                 path: "/loggedInPage/employeeInfo",
                 element: < EmployeeInfo / >
+            },
+            {
+                path: "/loggedInPage/employeeInfo/employeeDetails",
+                element: < EmployeeDetails / >
             },
             {
                 path: "/loggedInPage/payrollProcess",

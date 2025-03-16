@@ -1,0 +1,19 @@
+.sidebar {
+    background-color: #343a40;
+    /* Dark background */
+    color: white;
+    /* Bright text */
+    font-weight: bold;
+    /* Bold text */
+}
+
+.sidebar a {
+    color: #f8f9fa;
+    /* Lighter text for links */
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #ffc107;
+    /* Highlighted color on hover */
+}
