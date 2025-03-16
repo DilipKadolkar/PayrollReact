@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FormControl, ListGroup, Button, Card } from 'react-bootstrap';
+import { FormControl, ListGroup, Button } from 'react-bootstrap';
 
-export default function SearchBox() {
+export default function SearchBox({ onSearch }) {
     const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
-    const [employeeData, setEmployeeData] = useState(null);
     const [showSuggestions, setShowSuggestions] = useState(false);
 
-    // Fetch employee suggestions when query changes
     useEffect(() => {
         if (query.trim().length > 0) {
             fetch(`http://localhost:8080/api/employees`)
@@ -20,37 +18,35 @@ export default function SearchBox() {
                             .includes(query.toLowerCase())
                     );
                     setSuggestions(filteredEmployees);
-                    setShowSuggestions(true); // Show suggestions
+                    setShowSuggestions(true);
                 })
                 .catch((error) => console.error('Error fetching employee suggestions:', error));
         } else {
             setSuggestions([]);
-            setShowSuggestions(false); // Hide suggestions
+            setShowSuggestions(false);
         }
     }, [query]);
 
-    // Handle when a suggestion is clicked
     const handleSuggestionClick = (employee) => {
-        setQuery(`${employee.firstName} ${employee.lastName}`); // Update search input
-        setShowSuggestions(false); // Hide suggestions immediately
-        setSuggestions([]); // Clear suggestions list
-        setSelectedEmployee(employee); // Set the selected employee
-        console.log('Selected employee:', employee); // Debugging
+        setQuery(`${employee.firstName} ${employee.lastName}`);
+        setShowSuggestions(false);
+        setSuggestions([]);
+        setSelectedEmployee(employee);
     };
 
-    // Handle the Search button click
     const handleSearchClick = () => {
         if (selectedEmployee) {
             fetch(`http://localhost:8080/api/employees/${selectedEmployee.employeeID}`)
                 .then((response) => response.json())
-                .then((data) => setEmployeeData(data)) // Store employee data
+                .then((data) => {
+                    onSearch(data); // Pass the employee data to the parent component
+                })
                 .catch((error) => console.error('Error fetching employee data:', error));
         }
     };
 
     return (
         <div style={{ margin: '4% auto', marginLeft: '35%', width: '50%' }}>
-            {/* Search input and search button container */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <FormControl
                     type="text"
@@ -58,19 +54,18 @@ export default function SearchBox() {
                     value={query}
                     onChange={(e) => {
                         setQuery(e.target.value);
-                        setShowSuggestions(true); // Show suggestions when typing
+                        setShowSuggestions(true);
                     }}
-                    style={{ flex: 1 }} // Make the input box flexible
+                    style={{ flex: 1 }}
                 />
                 <Button
                     onClick={handleSearchClick}
-                    disabled={!selectedEmployee} // Disable button until an employee is selected
+                    disabled={!selectedEmployee}
                 >
                     Search
                 </Button>
             </div>
 
-            {/* Suggestions dropdown */}
             {showSuggestions && suggestions.length > 0 && (
                 <ListGroup style={{ marginTop: '1%' }}>
                     {suggestions.map((employee, index) => (
@@ -83,24 +78,6 @@ export default function SearchBox() {
                         </ListGroup.Item>
                     ))}
                 </ListGroup>
-            )}
-
-            {/* Display employee details */}
-            {employeeData && (
-                <Card style={{ marginTop: '30%' }}>
-                    <Card.Body>
-                        <Card.Title>{`${employeeData.firstName} ${employeeData.lastName}`}</Card.Title>
-                        <Card.Text>
-                            <strong>Email:</strong> {employeeData.email}<br />
-                            <strong>Phone Number:</strong> {employeeData.phoneNumber}<br />
-                            <strong>Job Title:</strong> {employeeData.jobTitle}<br />
-                            <strong>Department:</strong> {employeeData.department}<br />
-                            <strong>Hire Date:</strong> {new Date(employeeData.hireDate).toLocaleDateString()}<br />
-                            <strong>Salary:</strong> {employeeData.salary}<br />
-                            <strong>Address:</strong> {`${employeeData.addressLine1}, ${employeeData.addressLine2}, ${employeeData.city}, ${employeeData.state}, ${employeeData.zipCode}`}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
             )}
         </div>
     );
