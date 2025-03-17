@@ -9,15 +9,26 @@ export default function SearchBox({ onSearch }) {
 
     useEffect(() => {
         if (query.trim().length > 0) {
+            // Fetch employees from the API
             fetch(`http://localhost:8080/api/employees`)
                 .then((response) => response.json())
                 .then((data) => {
+                    // Filter names that start with the query
                     const filteredEmployees = data.filter((employee) =>
-                        `${employee.firstName} ${employee.lastName}`
-                            .toLowerCase()
-                            .includes(query.toLowerCase())
+                        `${employee.firstName.toLowerCase()}`.startsWith(query.toLowerCase()) ||
+                        `${employee.lastName.toLowerCase()}`.startsWith(query.toLowerCase())
                     );
-                    setSuggestions(filteredEmployees);
+
+                    // Exclude the selected employee from the suggestions
+                    const filteredSuggestions = selectedEmployee
+                        ? filteredEmployees.filter(
+                              (employee) =>
+                                  `${employee.firstName} ${employee.lastName}` !==
+                                  `${selectedEmployee.firstName} ${selectedEmployee.lastName}`
+                          )
+                        : filteredEmployees;
+
+                    setSuggestions(filteredSuggestions);
                     setShowSuggestions(true);
                 })
                 .catch((error) => console.error('Error fetching employee suggestions:', error));
@@ -25,29 +36,32 @@ export default function SearchBox({ onSearch }) {
             setSuggestions([]);
             setShowSuggestions(false);
         }
-    }, [query]);
+    }, [query, selectedEmployee]);
 
     const handleSuggestionClick = (employee) => {
+        // Set selected employee and clear suggestions
         setQuery(`${employee.firstName} ${employee.lastName}`);
         setShowSuggestions(false);
-        setSuggestions([]);
         setSelectedEmployee(employee);
+        setSuggestions([]);
     };
 
     const handleSearchClick = () => {
         if (selectedEmployee) {
+            // Fetch details of the selected employee
             fetch(`http://localhost:8080/api/employees/${selectedEmployee.employeeID}`)
                 .then((response) => response.json())
                 .then((data) => {
-                    onSearch(data); // Pass the employee data to the parent component
+                    onSearch(data); // Pass data to the parent component
                 })
                 .catch((error) => console.error('Error fetching employee data:', error));
         }
     };
 
     return (
-        <div style={{ margin: '4% auto', marginLeft: '35%', width: '50%' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div style={{ margin: '4% auto', position: 'relative', width: '60%' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2%' }}>
+                {/* Input field for search query */}
                 <FormControl
                     type="text"
                     placeholder="Search for employee..."
@@ -58,16 +72,25 @@ export default function SearchBox({ onSearch }) {
                     }}
                     style={{ flex: 1 }}
                 />
-                <Button
-                    onClick={handleSearchClick}
-                    disabled={!selectedEmployee}
-                >
+                {/* Search button */}
+                <Button onClick={handleSearchClick} disabled={!query.trim()}>
                     Search
                 </Button>
             </div>
 
+            {/* Suggestions dropdown */}
             {showSuggestions && suggestions.length > 0 && (
-                <ListGroup style={{ marginTop: '1%' }}>
+                <ListGroup
+                    style={{
+                        position: 'absolute', // Ensure dropdown appears independently
+                        zIndex: 1050, // Above other elements like the navbar
+                        backgroundColor: '#fff',
+                        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                        maxHeight: '200px', // Limit height for overflow
+                        overflowY: 'auto', // Add scroll for long lists
+                        width: '100%', // Match the width of the search box
+                    }}
+                >
                     {suggestions.map((employee, index) => (
                         <ListGroup.Item
                             key={index}
