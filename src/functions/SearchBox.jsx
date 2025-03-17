@@ -59,7 +59,7 @@ export default function SearchBox({ onSearch }) {
     };
 
     return (
-        <div style={{ margin: '4% auto', position: 'relative', width: '60%' }}>
+        <div style={{ margin: '4% auto', position: 'relative', width: '40%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '2%' }}>
                 {/* Input field for search query */}
                 <FormControl
@@ -70,7 +70,7 @@ export default function SearchBox({ onSearch }) {
                         setQuery(e.target.value);
                         setShowSuggestions(true);
                     }}
-                    style={{ flex: 1 }}
+                    style={{ flex: 1 ,width: '100%',height:'30px', borderRadius: '0'}}
                 />
                 {/* Search button */}
                 <Button onClick={handleSearchClick} disabled={!query.trim()}>
@@ -88,14 +88,14 @@ export default function SearchBox({ onSearch }) {
                         boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
                         maxHeight: '200px', // Limit height for overflow
                         overflowY: 'auto', // Add scroll for long lists
-                        width: '100%', // Match the width of the search box
+                        width: '40%', // Match the width of the search box
                     }}
                 >
                     {suggestions.map((employee, index) => (
                         <ListGroup.Item
                             key={index}
                             onClick={() => handleSuggestionClick(employee)}
-                            style={{ cursor: 'pointer' }}
+                            style={{ width: '100%',height:'25px', borderRadius: '0',cursor: 'pointer' }}
                         >
                             {`${employee.firstName} ${employee.lastName}`}
                         </ListGroup.Item>

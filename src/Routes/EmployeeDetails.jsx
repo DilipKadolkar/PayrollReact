@@ -24,6 +24,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.firstName}
                     onChange={(e) => setEmployeeData({ ...employeeData, firstName: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formLastName">
@@ -32,6 +33,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.lastName}
                     onChange={(e) => setEmployeeData({ ...employeeData, lastName: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formEmail">
@@ -40,6 +42,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="email"
                     value={employeeData.email}
                     onChange={(e) => setEmployeeData({ ...employeeData, email: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formPhoneNumber">
@@ -48,6 +51,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.phoneNumber}
                     onChange={(e) => setEmployeeData({ ...employeeData, phoneNumber: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formJobTitle">
@@ -56,6 +60,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.jobTitle}
                     onChange={(e) => setEmployeeData({ ...employeeData, jobTitle: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formDepartment">
@@ -64,6 +69,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.department}
                     onChange={(e) => setEmployeeData({ ...employeeData, department: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formHireDate">
@@ -72,6 +78,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="date"
                     value={new Date(employeeData.hireDate).toISOString().split('T')[0]}
                     onChange={(e) => setEmployeeData({ ...employeeData, hireDate: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formSalary">
@@ -80,6 +87,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="number"
                     value={employeeData.salary}
                     onChange={(e) => setEmployeeData({ ...employeeData, salary: e.target.value })}
+                    style={{ width: '150%', height: '30px', borderRadius: '0' }} // Make the salary input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formAddressLine1">
@@ -88,6 +96,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.addressLine1}
                     onChange={(e) => setEmployeeData({ ...employeeData, addressLine1: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formAddressLine2">
@@ -96,6 +105,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.addressLine2}
                     onChange={(e) => setEmployeeData({ ...employeeData, addressLine2: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formCity">
@@ -104,6 +114,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.city}
                     onChange={(e) => setEmployeeData({ ...employeeData, city: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formState">
@@ -112,6 +123,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.state}
                     onChange={(e) => setEmployeeData({ ...employeeData, state: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Form.Group controlId="formZipCode">
@@ -120,6 +132,7 @@ const ProfileSection = memo(({ employeeData, setEmployeeData }) => (
                     type="text"
                     value={employeeData.zipCode}
                     onChange={(e) => setEmployeeData({ ...employeeData, zipCode: e.target.value })}
+                    style={{ width: '100%', height: '30px', borderRadius: '0' }} // Make the input field broader and remove rounded corners
                 />
             </Form.Group>
             <Button variant="primary" type="submit">
@@ -150,7 +163,7 @@ export default function EmployeeDetails() {
                 <Container>
                     <Navbar.Toggle />
                     <Navbar.Collapse>
-                        <Nav className="me-auto">
+                        <Nav className="me-auto" style={{ justifyContent: 'space-between', width: '100%' }}>
                             <Nav.Link
                                 href="#profile"
                                 active={activeTab === 'profile'}
@@ -160,8 +173,10 @@ export default function EmployeeDetails() {
                                     backgroundColor: isDisabled ? '#cccccc' : '#ffffff',
                                     color: isDisabled ? '#666666' : '#000',
                                     borderRadius: '4px',
-                                    margin: '0 2% 1% 0',
+                                    margin: '0 120% 1% 0', // Adjusted margin to add space between tabs
                                     pointerEvents: isDisabled ? 'none' : 'auto',
+                                    flex: 1,
+                                    textAlign: 'center',
                                 }}
                             >
                                 Profile
@@ -175,8 +190,10 @@ export default function EmployeeDetails() {
                                     backgroundColor: isDisabled ? '#cccccc' : '#ffffff',
                                     color: isDisabled ? '#666666' : '#000',
                                     borderRadius: '4px',
-                                    margin: '0 2% 1% 0',
+                                    margin: '0 120% 1% 0', // Adjusted margin to add space between tabs
                                     pointerEvents: isDisabled ? 'none' : 'auto',
+                                    flex: 1,
+                                    textAlign: 'center',
                                 }}
                             >
                                 Bank
@@ -190,8 +207,10 @@ export default function EmployeeDetails() {
                                     backgroundColor: isDisabled ? '#cccccc' : '#ffffff',
                                     color: isDisabled ? '#666666' : '#000',
                                     borderRadius: '4px',
-                                    margin: '0 2% 1% 0',
+                                    margin: '0 1% 1% 0', // Adjusted margin to add space between tabs
                                     pointerEvents: isDisabled ? 'none' : 'auto',
+                                    flex: 1,
+                                    textAlign: 'center',
                                 }}
                             >
                                 Salary
