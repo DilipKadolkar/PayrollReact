@@ -12,7 +12,8 @@ import {
     faClock,
     faHome,
     faMoneyBill,
-    faIdBadge
+    faIdBadge,
+    faUserFriends
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AddEmployee.module.css"; // Import the CSS module
 
@@ -25,6 +26,8 @@ export default function AddEmployee() {
     const [hireDate, setHireDate] = useState("");
     const [gender, setGender] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+    const [emergencyContact, setEmergencyContact] = useState(""); // New state for Emergency Contact
+    const [reportingManager, setReportingManager] = useState(""); // New state for Reporting Manager
     const [probationPeriod, setProbationPeriod] = useState("");
     const [aadharNumber, setAadharNumber] = useState("");
     const [email, setEmail] = useState("");
@@ -71,6 +74,8 @@ export default function AddEmployee() {
                         hireDate,
                         gender,
                         phoneNumber,
+                        emergencyContact, // Include Emergency Contact
+                        reportingManager, // Include Reporting Manager
                         probationPeriod,
                         aadharNumber,
                         email,
@@ -95,6 +100,8 @@ export default function AddEmployee() {
                     setHireDate("");
                     setGender("");
                     setPhoneNumber("");
+                    setEmergencyContact(""); // Reset Emergency Contact
+                    setReportingManager(""); // Reset Reporting Manager
                     setProbationPeriod("");
                     setAadharNumber("");
                     setEmail("");
@@ -258,6 +265,34 @@ placeholder = "Enter contact number"
 value = { phoneNumber }
 onChange = {
     (e) => setPhoneNumber(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faPhone }
+className = { styles.icon }
+/>{" "} <
+input type = "text"
+placeholder = "Enter emergency contact number"
+value = { emergencyContact }
+onChange = {
+    (e) => setEmergencyContact(e.target.value)
+}
+className = { styles.employeeInput }
+/>{" "} < /
+div > { " " } <
+    div className = { styles.inputGroup } >
+    <
+    FontAwesomeIcon icon = { faUserFriends }
+className = { styles.icon }
+/>{" "} <
+input type = "text"
+placeholder = "Enter reporting manager"
+value = { reportingManager }
+onChange = {
+    (e) => setReportingManager(e.target.value)
 }
 className = { styles.employeeInput }
 />{" "} < /
